@@ -1,0 +1,24 @@
+server:
+  port: 7071
+spring:
+  application:
+    name: consumer-service
+  cloud:
+    consul:
+      host: localhost
+      port: 8500
+      discovery:
+        prefer-ip-address: true
+        register: true
+        health-check-path: /actuator/health
+        health-check-interval: 10s
+
+    openfeign:
+      client:
+        config:
+          provider-service: # 服务名称
+            logger-level: Full
+logging:
+  level:
+    feign: debug
+    org.example.api: debug
