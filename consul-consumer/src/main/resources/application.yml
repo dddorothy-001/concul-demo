@@ -11,7 +11,7 @@ spring:
         prefer-ip-address: true
         register: true
         health-check-path: /actuator/health
-        health-check-interval: 10s
+        health-check-interval: 30s
 
     openfeign:
       client:
@@ -22,3 +22,9 @@ logging:
   level:
     feign: debug
     org.example.api: debug
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health, info, prometheus
